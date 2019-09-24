@@ -111,44 +111,55 @@ public class nSet {
 
     public boolean isEmpty () {
         // return true iff the current nSet is empty
-        return size > 0;
+        return size == 0;
     }
 
     public boolean delete (int x) {
         // return false if x isn't in the set;
         // delete the number x from the current set and return true.
-        if(this.find(x)){
-
+            int i = (x>>6);
+            int j = x - (i<<6);
+            long y = this.store[i];
+            if (((y>>>j) & 1) != 1) return false;   // if x is present, do nothing
+            this.store[i] ^= ((long) 1<<j);  // "|" is the bitwise OR operation
+            this.size--;
             return true;
-        }
-        else{
-            return false;
-        }
     }
 
 
 	public nSet intersect (nSet X) {
 	   // return a new nSet which is the intersection of the current nSet and X
+        return X;
 	} 
 	
     public nSet subtract (nSet X) {
 	   // return a new nSet which is the subtraction of the current nSet by X
+        return X;
 	} 
 	
     public nSet complement() {
 	   // return a new nSet which is the complement of the current nSet
+        nSet complementarySet = new nSet(this.Max);
+        for (int i = 0; i<=Max; i++) {
+            if (this.find(i)) complementarySet.add((~i));
+        }
+        return complementarySet;
 	} 
 	
 	public boolean equal(nSet X) {
 	   // return true iff X and the current nSet contain the same set of numbers
+        return true;
 	}
 	
 	public boolean isSubset(nSet X) {
 	   // return true iff X is a subset of the current nSet
+        return true;
 	}
 	
 	public int[] toArray () {
 	   // return an int array which contains all the numbers in the current nSet
+        int[] arr = new int[30];
+        return arr;
 	} 
 	
 	public void enumerate() {
@@ -173,13 +184,13 @@ public class nSet {
         }
         
         
-        /* more testing code
+        // more testing code
         nSet B = new nSet(1000); // all natural numbers <= 1000, is a power of 2
 
-        nSet C = new nSet(1000); // all odd natural numbers <= 1000        
+        nSet C = new nSet(1000); // all odd natural numbers <= 1000
         nSet D = C.complement();
-        
-        nSet E = D.union(B);
+
+     /*   nSet E = D.union(B);
 
         if (D.equal(E))
             System.out.println("D is equal to E");
