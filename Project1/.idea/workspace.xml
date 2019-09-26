@@ -35,27 +35,27 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="865" />
-          <entry key="txt" value="154" />
+          <entry key="java" value="1196" />
+          <entry key="txt" value="301" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="865" />
-          <entry key="PLAIN_TEXT" value="154" />
+          <entry key="JAVA" value="1196" />
+          <entry key="PLAIN_TEXT" value="301" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.72213244">
+    <splitter split-orientation="horizontal" split-proportion="0.5961228">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/nSet.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="148" column="4" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="4" />
+                <state relative-caret-position="287">
+                  <caret line="136" column="13" lean-forward="true" selection-start-line="136" selection-start-column="13" selection-end-line="136" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
@@ -79,7 +79,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/../../../Chichi's_Algos/Answer-nSet.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-774">
+                <state relative-caret-position="-591">
                   <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -114,7 +114,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="729" />
@@ -129,7 +129,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569508971918" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569511098575" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -172,7 +172,7 @@
       <workItem from="1569262786871" duration="255000" />
       <workItem from="1569263111800" duration="6972000" />
       <workItem from="1569346642201" duration="1057000" />
-      <workItem from="1569448099851" duration="3147000" />
+      <workItem from="1569448099851" duration="4856000" />
     </task>
     <task id="LOCAL-00001" summary="Reversed the add operation to create the delete function">
       <created>1569337387769</created>
@@ -195,14 +195,21 @@
       <option name="project" value="LOCAL" />
       <updated>1569461644155</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add logic to equal method. Make working depending on the implementation of Array.equals(). Will likely have to come back to it.">
+      <created>1569509591871</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1569509591871</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11431000" />
+    <option name="totallyTimeSpent" value="13140000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="729" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="728" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.15347335" />
@@ -246,7 +253,8 @@
     <MESSAGE value="Added worked for isSubset" />
     <MESSAGE value="Added potentail logic for toArray" />
     <MESSAGE value="Added potential logic for toArray based off the print function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added potential logic for toArray based off the print function" />
+    <MESSAGE value="Add logic to equal method. Make working depending on the implementation of Array.equals(). Will likely have to come back to it." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add logic to equal method. Make working depending on the implementation of Array.equals(). Will likely have to come back to it." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../../../Chichi's_Algos/Answer-nSet.java">
@@ -261,8 +269,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="148" column="4" selection-start-line="148" selection-start-column="4" selection-end-line="148" selection-end-column="4" />
+        <state relative-caret-position="287">
+          <caret line="136" column="13" lean-forward="true" selection-start-line="136" selection-start-column="13" selection-end-line="136" selection-end-column="13" />
         </state>
       </provider>
     </entry>

@@ -129,7 +129,14 @@ public class nSet {
 
 	public nSet intersect (nSet X) {
 	   // return a new nSet which is the intersection of the current nSet and X
-        return X;
+        nSet intersection = new nSet(Math.min(X.Max, this.Max));
+
+        for(int i = 0; i<Math.max(X.Max, this.Max); i++){
+            if(X.find(i) && this.find(i)){
+                intersection.add(i);
+            }
+        }
+        return intersection;
 	} 
 	
     public nSet subtract (nSet X) {
