@@ -141,6 +141,16 @@ public class nSet {
 	
     public nSet subtract (nSet X) {
 	   // return a new nSet which is the subtraction of the current nSet by X
+        nSet difference = new nSet(Math.max(X.Max, this.Max));
+
+        for(int i = 0; i<Math.max(X.Max, this.Max); i++){
+            if(X.find(i) && !this.find(i)){
+                difference.add(i);
+            }
+            else if(!X.find(i) && this.find(i)){
+                difference.add(i);
+            }
+        }
         return X;
 	} 
 	
