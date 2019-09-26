@@ -35,14 +35,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="660" />
-          <entry key="txt" value="56" />
+          <entry key="java" value="787" />
+          <entry key="txt" value="82" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="660" />
-          <entry key="PLAIN_TEXT" value="56" />
+          <entry key="JAVA" value="787" />
+          <entry key="PLAIN_TEXT" value="82" />
         </counts>
       </usages-collector>
     </session>
@@ -54,8 +54,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/nSet.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="158" column="29" selection-start-line="158" selection-start-column="29" selection-end-line="158" selection-end-column="29" />
+                <state relative-caret-position="226">
+                  <caret line="173" column="28" selection-start-line="173" selection-start-column="28" selection-end-line="173" selection-end-column="28" />
                 </state>
               </provider>
             </entry>
@@ -79,7 +79,7 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/../../../Chichi's_Algos/Answer-nSet.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-745">
+                <state relative-caret-position="-1036">
                   <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -128,7 +128,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569452349637" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569457464216" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -171,7 +171,7 @@
       <workItem from="1569262786871" duration="255000" />
       <workItem from="1569263111800" duration="6972000" />
       <workItem from="1569346642201" duration="1057000" />
-      <workItem from="1569448099851" duration="1146000" />
+      <workItem from="1569448099851" duration="2179000" />
     </task>
     <task id="LOCAL-00001" summary="Reversed the add operation to create the delete function">
       <created>1569337387769</created>
@@ -180,11 +180,18 @@
       <option name="project" value="LOCAL" />
       <updated>1569337387770</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added worked for isSubset">
+      <created>1569457480540</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1569457480540</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9430000" />
+    <option name="totallyTimeSpent" value="10463000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -228,14 +235,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Reversed the add operation to create the delete function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reversed the add operation to create the delete function" />
+    <MESSAGE value="Added worked for isSubset" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added worked for isSubset" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/nSet.java</url>
-          <line>193</line>
+          <line>201</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
@@ -255,8 +263,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="158" column="29" selection-start-line="158" selection-start-column="29" selection-end-line="158" selection-end-column="29" />
+        <state relative-caret-position="226">
+          <caret line="173" column="28" selection-start-line="173" selection-start-column="28" selection-end-line="173" selection-end-column="28" />
         </state>
       </provider>
     </entry>

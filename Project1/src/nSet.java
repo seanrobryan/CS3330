@@ -161,10 +161,18 @@ public class nSet {
         }
         return true;
 	}
-	
+
+	// Most of the logic was striped from the print function
 	public int[] toArray () {
 	   // return an int array which contains all the numbers in the current nSet
-        int[] arr = new int[30];
+        int[] arr = new int[this.size];
+        int count = 0;
+        for(int i=0; i<this.n_long; i++)
+            for(int j=0; j<64 ; j++)
+                if (((this.store[i] >>> j) & 1) == 1) {
+                    arr[count] = (i << 6 ) + j;
+                    count++;
+                }
         return arr;
 	} 
 	
