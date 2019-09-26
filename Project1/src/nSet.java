@@ -146,10 +146,10 @@ public class nSet {
         }
         return complementarySet;
 	} 
-	
+
 	public boolean equal(nSet X) {
 	   // return true iff X and the current nSet contain the same set of numbers
-        return true;
+        return X.store.equals(this.store);
 	}
 	
 	public boolean isSubset(nSet X) {
