@@ -121,7 +121,7 @@ public class nSet {
             int j = x - (i<<6);
             long y = this.store[i];
             if (((y>>>j) & 1) != 1) return false;   // if x is present, do nothing
-            this.store[i] ^= ((long) 1<<j);  // "|" is the bitwise OR operation
+            this.store[i] ^= ((long) 1<<j);  //
             this.size--;
             return true;
     }
@@ -142,6 +142,7 @@ public class nSet {
         nSet complementarySet = new nSet(this.Max);
         for (int i = 0; i<=Max; i++) {
             if (this.find(i)) complementarySet.add((~i));
+            complementarySet.size++;
         }
         return complementarySet;
 	} 
@@ -153,6 +154,11 @@ public class nSet {
 	
 	public boolean isSubset(nSet X) {
 	   // return true iff X is a subset of the current nSet
+        for (int i = 0; i<X.size; i++){
+            if(X.store[i] != this.store[i]){
+                return false;
+            }
+        }
         return true;
 	}
 	
