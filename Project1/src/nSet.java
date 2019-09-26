@@ -159,7 +159,6 @@ public class nSet {
         nSet complementarySet = new nSet(this.Max);
         for (int i = 0; i<=Max; i++) {
             if (this.find(i)) complementarySet.add((~i));
-            complementarySet.size++;
         }
         return complementarySet;
 	} 
