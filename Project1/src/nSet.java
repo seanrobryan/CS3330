@@ -221,7 +221,7 @@ public class nSet {
         nSet C = new nSet(1000); // all odd natural numbers <= 1000
         nSet D = C.complement();
 
-     /*   nSet E = D.union(B);
+        nSet E = D.union(B);
 
         if (D.equal(E))
             System.out.println("D is equal to E");
@@ -266,8 +266,8 @@ public class nSet {
         System.out.print(J.size() + " is the size of J = "); J.print();
         System.out.print(K.size() + " is the size of K = "); K.print();
         
-        System.out.println("All subsets of H:");
-        H.enumerate();
-        */
+        //System.out.println("All subsets of H:");
+        //H.enumerate();
+
     }
 }
