@@ -151,14 +151,14 @@ public class nSet {
                 difference.add(i);
             }
         }
-        return X;
+        return difference;
 	} 
 	
     public nSet complement() {
 	   // return a new nSet which is the complement of the current nSet
         nSet complementarySet = new nSet(this.Max);
-        for (int i = 0; i<=Max; i++) {
-            if (this.find(i)) complementarySet.add((~i));
+        for (int i = 0; i<=this.n_long; i++) {
+            complementarySet.store[i] = ~this.store[i];
         }
         return complementarySet;
 	} 
@@ -196,7 +196,7 @@ public class nSet {
 	   // Enumerate all subsets of the current nSet and print them out.
 	   // You may assume the current nSet contains less than 30 numbers.
 	}
-	 //
+
 
 
     public static void main(String[] args) {
@@ -216,8 +216,18 @@ public class nSet {
         
         // more testing code
         nSet B = new nSet(1000); // all natural numbers <= 1000, is a power of 2
+        for(int i = 0; i<B.Max; i++){
+            if((Math.log(i)/Math.log(2) % 1 == 0)){
+                B.add(i);
+            }
+        }
 
         nSet C = new nSet(1000); // all odd natural numbers <= 1000
+        for(int i = 0; i<=C.Max; i++){
+            if((i & 1) == 1){
+                C.add(i);
+            }
+        }
         nSet D = C.complement();
 
         nSet E = D.union(B);
@@ -235,6 +245,7 @@ public class nSet {
             System.out.println("B is not equal to F");
 
         nSet G = new nSet(1000); // all natural numbers <= 1000, and divisible by 8
+        for(int i = 0; i<=G.Max; i+=8){G.add(i);}
                 
         nSet H = A.intersect(G);
         if (G.equal(H))
