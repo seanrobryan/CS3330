@@ -157,9 +157,10 @@ public class nSet {
     public nSet complement() {
 	   // return a new nSet which is the complement of the current nSet
         nSet complementarySet = new nSet(this.Max);
-        for (int i = 0; i<=this.n_long; i++) {
+        for (int i = 0; i < this.n_long; i++) {
             complementarySet.store[i] = ~this.store[i];
         }
+        complementarySet.size = this.Max + 1 - this.size;
         return complementarySet;
 	} 
 
