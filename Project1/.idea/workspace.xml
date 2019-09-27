@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="94e044c0-44eb-47da-bddd-7109a466e489" name="Default Changelist" comment="Fixed the">
+    <list default="true" id="94e044c0-44eb-47da-bddd-7109a466e489" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/nSet.java" afterDir="false" />
     </list>
@@ -25,60 +25,40 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="6" />
+          <entry key="java" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="6" />
+          <entry key="JAVA" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1855" />
-          <entry key="txt" value="740" />
+          <entry key="java" value="2263" />
+          <entry key="txt" value="866" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1855" />
-          <entry key="PLAIN_TEXT" value="740" />
+          <entry key="JAVA" value="2263" />
+          <entry key="PLAIN_TEXT" value="866" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5024233">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/nSet.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1195">
-                  <caret line="231" selection-start-line="231" selection-end-line="231" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../../../Chichi's_Algos/Answer-nSet.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="156">
-                  <caret line="262" column="41" selection-start-line="262" selection-start-column="31" selection-end-line="262" selection-end-column="41" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/nSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="62">
+              <caret line="181" column="4" selection-start-line="181" selection-start-column="4" selection-end-line="181" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -141,7 +121,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569551394964" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569553257556" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -184,7 +164,7 @@
       <workItem from="1569262786871" duration="255000" />
       <workItem from="1569263111800" duration="6972000" />
       <workItem from="1569346642201" duration="1057000" />
-      <workItem from="1569448099851" duration="11781000" />
+      <workItem from="1569448099851" duration="13519000" />
     </task>
     <task id="LOCAL-00001" summary="Reversed the add operation to create the delete function">
       <created>1569337387769</created>
@@ -249,11 +229,18 @@
       <option name="project" value="LOCAL" />
       <updated>1569550911827</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fixed an array out of bounds error with the complement function by switching from &lt;= to &lt; n_long.">
+      <created>1569551446702</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1569551446702</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20065000" />
+    <option name="totallyTimeSpent" value="21803000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -306,25 +293,14 @@
     <MESSAGE value="Uncommented testing code" />
     <MESSAGE value="Removed size incrementation from the complement method (all size incrementing should be handled in the add and delete methods." />
     <MESSAGE value="Added to the test code to fill the sets properly. Made changes to the complement function." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added to the test code to fill the sets properly. Made changes to the complement function." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/nSet.java</url>
-          <line>231</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Fixed an array out of bounds error with the complement function by switching from &lt;= to &lt; n_long." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed an array out of bounds error with the complement function by switching from &lt;= to &lt; n_long." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../../../Chichi's_Algos/Answer-nSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="262" column="41" selection-start-line="262" selection-start-column="31" selection-end-line="262" selection-end-column="41" />
+        <state relative-caret-position="-1230">
+          <caret line="94" column="21" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -333,8 +309,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/nSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1195">
-          <caret line="231" selection-start-line="231" selection-end-line="231" />
+        <state relative-caret-position="62">
+          <caret line="181" column="4" selection-start-line="181" selection-start-column="4" selection-end-line="181" selection-end-column="4" />
         </state>
       </provider>
     </entry>
