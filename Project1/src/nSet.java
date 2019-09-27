@@ -109,11 +109,13 @@ public class nSet {
 
     //You need to complete the implementation of the following operations:
 
+    // O(1)
     public boolean isEmpty () {
         // return true iff the current nSet is empty
         return size == 0;
     }
 
+    // O(1)
     public boolean delete (int x) {
         // return false if x isn't in the set;
         // delete the number x from the current set and return true.
@@ -126,7 +128,7 @@ public class nSet {
             return true;
     }
 
-
+    // O(m)
 	public nSet intersect (nSet X) {
 	   // return a new nSet which is the intersection of the current nSet and X
         nSet intersection = new nSet(Math.min(X.Max, this.Max));
@@ -138,7 +140,8 @@ public class nSet {
         }
         return intersection;
 	} 
-	
+
+	// O(m)
     public nSet subtract (nSet X) {
 	   // return a new nSet which is the subtraction of the current nSet by X
         nSet difference = new nSet(Math.max(X.Max, this.Max));
@@ -153,7 +156,8 @@ public class nSet {
         }
         return difference;
 	} 
-	
+
+	// O(m)
     public nSet complement() {
 	   // return a new nSet which is the complement of the current nSet
         nSet complementarySet = new nSet(this.Max);
@@ -164,11 +168,18 @@ public class nSet {
         return complementarySet;
 	} 
 
+    // O(m)
 	public boolean equal(nSet X) {
 	   // return true iff X and the current nSet contain the same set of numbers
-        return X.store.equals(this.store);
+        for(int i = 0; i<n_long; i++){
+            if(X.store[i] != this.store[i]){
+                return false;
+            }
+        }
+        return true;
 	}
-	
+
+	// O(m)
 	public boolean isSubset(nSet X) {
 	   // return true iff X is a subset of the current nSet
         for (int i = 0; i<X.size; i++){
@@ -179,7 +190,7 @@ public class nSet {
         return true;
 	}
 
-
+    // O(m)
 	// Most of the logic was striped from the print function
 	public int[] toArray () {
 	   // return an int array which contains all the numbers in the current nSet
