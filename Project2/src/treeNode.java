@@ -1,5 +1,7 @@
 // Binary search tree nodes and standard methods:
 
+import java.util.Stack;
+
 public class treeNode {
 	public int iData;             // data item (key)
 	public int height;            // height of node
@@ -165,15 +167,92 @@ public class treeNode {
         // Cases: external left, look up until you can take a left edge -- No par field :(
         //      external right, parent node
         //      interanal node: farthest right child in left subtree
-    	return nullnode; // not implemented yet.
-    }
+
+		treeNode [] data = inorder(this);
+
+		for(int i = data.length - 1; i >= 0; i--){
+			if(data[i].iData == x){
+				if(i != 0){
+					return data[i - 1];
+				}
+				else{
+					return nullnode;
+				}
+			}
+			else if(data[i].iData < x){
+				return data[i];
+			}
+		}
+		return nullnode;
+	}
     
     public treeNode successor( int x ) {
     	// Search for the successor node of x in the tree rooted by this node.
     	// The successor is the minimal node among all nodes in the tree whose iData is greater than x.
-    	return nullnode; // not implemented yet.
+		treeNode [] data = inorder(this);
+
+		for(int i = 0; i < data.length; i++){
+			if(data[i].iData == x ){
+				if(i != data.length - 1) {
+					return data[i + 1];
+				}
+				else{
+					return nullnode;
+				}
+			}
+			else if(data[i].iData > x){
+				return data[i];
+			}
+		}
+		return nullnode;
+
+		//Do an inorder traversal of the tree and store
+
+		/* // If the data is greater than the root and the root has right child, successor is to the right
+		if(curNode.iData <= x && curNode.right != nullnode){
+
+			// Defaults to finding the smallest node in the right subtree
+
+			// Keep track of last node in case the smallest node in the subtree has data x
+			// (parent would then be successor)
+			treeNode lastNode = curNode;
+			curNode = curNode.right;
+
+			// Smallest node in the subtree is the leftmost node
+			while(curNode.left != nullnode){
+				// If the current node's left child is not null and it has data x, its left child is its successor
+				if(curNode.iData == x) {
+					return curNode.left;
+				}
+				else {
+					lastNode = curNode;
+					curNode = curNode.left;
+				}
+			}
+			// If it hasn't found data x, the in order successor is the parent
+			return lastNode;
+		}
+		// If the data is less than the root and the root has left child, successor is to the left
+		else if(curNode.iData > x && curNode.left != nullnode){
+			curNode = curNode.left;
+			if(curNode.iData == x){
+				return curNode.successor(x);
+			}
+		}
+		else{
+			curNode = nullnode;
+		}
+
+
+    	return curNode; // not implemented yet. */
     }
-    
+
+
+    /*			x = 8
+    			9
+		7				15
+    4		8		13		18
+    */
     public treeNode deleteMax( treeNode par ) { 
      // PRE: par != nullnode
     	// delete the link from parent par and return the node with maximum key
@@ -231,4 +310,38 @@ public class treeNode {
         System.out.print(")");
     }
 
+
+    public int inorder(int i, int[] res){
+		if (this.left != nullnode){
+			i = this.left.inorder(i, res);
+		}
+		res[i++] = this.iData;
+		if (this.right != nullnode){
+			i = this.right.inorder(i, res);
+		}
+		return i;
+	}
+
+	/*
+		Utility method for finding return the inorder traversal of the tree.
+	*/
+	private treeNode [] inorder(treeNode root){
+		Stack<treeNode> leftToVist = new Stack<treeNode>();
+		treeNode [] arr = new treeNode[]{};
+		treeNode curNode = root;
+
+		int i = 0;
+		while(!leftToVist.isEmpty() || curNode != nullnode){
+			if(curNode != nullnode){
+				leftToVist.push(curNode);
+				curNode = curNode.left;
+			}
+			else{
+				arr[i] = leftToVist.pop();
+				curNode = arr[i].right;
+				i++;
+			}
+		}
+		return arr;
+	}
 }
