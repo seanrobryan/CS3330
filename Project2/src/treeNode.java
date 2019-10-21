@@ -205,54 +205,8 @@ public class treeNode {
 			}
 		}
 		return nullnode;
-
-		//Do an inorder traversal of the tree and store
-
-		/* // If the data is greater than the root and the root has right child, successor is to the right
-		if(curNode.iData <= x && curNode.right != nullnode){
-
-			// Defaults to finding the smallest node in the right subtree
-
-			// Keep track of last node in case the smallest node in the subtree has data x
-			// (parent would then be successor)
-			treeNode lastNode = curNode;
-			curNode = curNode.right;
-
-			// Smallest node in the subtree is the leftmost node
-			while(curNode.left != nullnode){
-				// If the current node's left child is not null and it has data x, its left child is its successor
-				if(curNode.iData == x) {
-					return curNode.left;
-				}
-				else {
-					lastNode = curNode;
-					curNode = curNode.left;
-				}
-			}
-			// If it hasn't found data x, the in order successor is the parent
-			return lastNode;
-		}
-		// If the data is less than the root and the root has left child, successor is to the left
-		else if(curNode.iData > x && curNode.left != nullnode){
-			curNode = curNode.left;
-			if(curNode.iData == x){
-				return curNode.successor(x);
-			}
-		}
-		else{
-			curNode = nullnode;
-		}
-
-
-    	return curNode; // not implemented yet. */
     }
 
-
-    /*			x = 8
-    			9
-		7				15
-    4		8		13		18
-    */
     public treeNode deleteMax( treeNode par ) { 
      // PRE: par != nullnode
     	// delete the link from parent par and return the node with maximum key
@@ -271,7 +225,7 @@ public class treeNode {
  	    } 
  	    return this;
  	}  // end insert
-    
+
     public treeNode remove(int x) {
         if (this == nullnode ) return nullnode;   // Item not found; do nothing
         if (x < this.iData) {
