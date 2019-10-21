@@ -226,6 +226,21 @@ public class treeNode {
  	    return this;
  	}  // end insert
 
+    public treeNode insert1(int k){
+		treeNode curNode = this;
+		while(true){
+			if (curNode == nullnode){
+				return new treeNode(k);
+			}
+			else if (k < this.iData){
+				curNode = curNode.left;
+			}
+			else{
+				curNode = curNode.right;
+			}
+		}
+    }
+
     public treeNode remove(int x) {
         if (this == nullnode ) return nullnode;   // Item not found; do nothing
         if (x < this.iData) {
