@@ -285,5 +285,84 @@ public class sorting {
         demo1("reversely sorted");
     }
 
+    private static void mergesort2(int low, int high){
+        // sort arr[low, high-1]
+        // Check if low is smaller then high, if not then the array is sorted
+        if (low < high-1) {
+            // Get the index of the element which is in the middle
+            int middle = (high + low) / 2;
+            // Sort the left side of the array
+            if(middle - low < 1000){
+                insertSort(low, middle - 1);
+            }
+            else{
+                mergesort2(low, middle);
+            }
+            // Sort the right side of the array
+            if(high - middle < 1000){
+                insertSort(middle, high - 1);
+            }
+            else{
+                mergesort2(middle, high);
+            }
+            merge(low, middle, high);
+        }
+    }
+
+    private static void quicksort2(int low, int high){
+        int i = low, j = high;
+
+        int pivot = arr[(high+low)/2];
+
+        // Divide into two lists
+        while (i <= j) {
+            // If the current value from the left list is smaller then the pivot
+            // element then get the next element from the left list
+            while (arr[i] < pivot) i++;
+
+            // If the current value from the right list is larger then the pivot
+            // element then get the next element from the right list
+            while (arr[j] > pivot) j--;
+
+            // If we have found a value in the left list which is larger than
+            // the pivot element and if we have found a value in the right list
+            // which is smaller then the pivot element then we exchange the
+            // values.
+            // As we are done we can increase i and j
+            if (i < j) {
+                exchange(i, j);
+                i++;
+                j--;
+            } else if (i == j) { i++; j--; }
+        }
+
+        // Recursion
+        if (low < j)
+            if(j - low < 1000){
+                insertSort(low, j);
+            }
+            else{
+                quicksort2(low, j);
+            }
+        if (i < high)
+            if(high - i < 1000){
+                insertSort(i, high);
+            }
+            else{
+                quicksort2(i, high);
+            }
+    }
 
 }
+
+
+
+
+/*Task 1: It is known that when the size of a sorting problem is small, t
+hen insertion sort works best. This idea can be used in merge sort and quick sort: For
+a recursive call, at first, check if the size of a subarray is less than 1000, use
+insertion sort instead. Suppose merge sort and quick sort with this idea are implemented in
+methods called mergesort2 and quicksort2. Please create a method called task1, which compares the
+performances of four methods, i.e., mergesort, mergesort2, quicksort, and quicksort2, on the same set of
+100 random arrays of size 1,000,000. The method task1 will create these 100 examples and summerize the
+running time for each method. Based on the experimental results, draw your conclusions. */
