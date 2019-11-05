@@ -254,12 +254,12 @@ public class sorting {
 
         randomGenerator = new Random();
 
-        try {
+        /* try {
             System.out.print("Please enter the array size : ");
             size = Integer.parseInt(read.readLine());
         } catch(Exception ex){
             ex.printStackTrace();
-        }
+        } */
 
         // create array
         arr = new int[size];
@@ -267,7 +267,7 @@ public class sorting {
         mergeArr = new int[size];
 
         // fill array
-        random = size*10;
+        /*random = size*10;
         for(int i=0; i<size; i++)
             arr[i] = arrCopy[i] = randomGenerator.nextInt(random);
         demo1("random");
@@ -282,7 +282,9 @@ public class sorting {
         demo2("nearly sorted");
 
         for(int i=0; i<size; i++) arrCopy[i] = size-i;
-        demo1("reversely sorted");
+        demo1("reversely sorted"); */
+
+        task1();
     }
 
     private static void mergesort2(int low, int high){
@@ -353,16 +355,58 @@ public class sorting {
             }
     }
 
+    private static void task1(){
+
+        randomGenerator = new Random();
+
+        size = 1000000;
+
+        // create array
+        arr = new int[size];
+        arrCopy = new int[size];
+        mergeArr = new int[size];
+
+        long [] runningTimes = new long[4];
+        long start, finish;
+
+
+        for(int i = 0; i < 100; i++){
+            // fill array
+            random = size*10;
+            for(int j=0; j<size; j++) {
+                arr[i] = arrCopy[i] = randomGenerator.nextInt(random);
+            }
+
+            // Test regular mergesort
+            start = System.currentTimeMillis();
+            mergesort(0, size);
+            finish = System.currentTimeMillis();
+            runningTimes[0] += finish - start;
+
+            // Test mergesort2
+            start = System.currentTimeMillis();
+            mergesort2(0, size);
+            finish = System.currentTimeMillis();
+            runningTimes[1] += finish - start;
+
+            // Test quicksort
+            start = System.currentTimeMillis();
+            quicksort(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[2] += finish - start;
+
+            // Test quicksort2
+            start = System.currentTimeMillis();
+            quicksort2(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[3] += finish - start;
+        }
+
+        System.out.println("Total running time for mergesort is: " + runningTimes[0] + " ms");
+        System.out.println("Total running time for mergesort2 is: " + runningTimes[1] + " ms");
+        System.out.println("Total running time for quicksort is: " + runningTimes[2] + " ms");
+        System.out.println("Total running time for quicksort2 is: " + runningTimes[3] + " ms");
+    }
+
+
 }
-
-
-
-
-/*Task 1: It is known that when the size of a sorting problem is small, t
-hen insertion sort works best. This idea can be used in merge sort and quick sort: For
-a recursive call, at first, check if the size of a subarray is less than 1000, use
-insertion sort instead. Suppose merge sort and quick sort with this idea are implemented in
-methods called mergesort2 and quicksort2. Please create a method called task1, which compares the
-performances of four methods, i.e., mergesort, mergesort2, quicksort, and quicksort2, on the same set of
-100 random arrays of size 1,000,000. The method task1 will create these 100 examples and summerize the
-running time for each method. Based on the experimental results, draw your conclusions. */
