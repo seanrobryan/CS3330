@@ -284,9 +284,15 @@ public class sorting {
         for(int i=0; i<size; i++) arrCopy[i] = size-i;
         demo1("reversely sorted"); */
 
-        task1();
+        //task1();
         //task2();
     }
+
+    /*
+
+            Start of Task 1
+
+     */
 
     private static void mergesort2(int low, int high){
         // sort arr[low, high-1]
@@ -401,6 +407,12 @@ public class sorting {
         System.out.println("Total running time for quicksort is: " + runningTimes[2] + " ms");
         System.out.println("Total running time for quicksort2 is: " + runningTimes[3] + " ms");
     }
+
+    /*
+
+            Start of Task 2
+
+     */
 
     private static boolean isSorted(int low, int high){
         for(int i = low; i < high; i++){
@@ -632,4 +644,89 @@ public class sorting {
         System.out.println("Total running time for quicksort3 on an unsorted array is: " + runningTimes[2] + " ms");
         System.out.println("Total running time for quicksort4 on an unsorted array is: " + runningTimes[3] + " ms");
     }
+
+    /*
+
+            Start of Task 3
+            The methods created will be a variation of quicksort3 because it performed the best,
+            or comparably well to the best, of the quicksort algorithms during the testing done in task2.
+
+     */
+
+    private static void quicksort5(int low, int high){
+        if (!isSorted(low, high)){
+
+            int i = low, j = high, m = (i + j) / 2;
+
+            int pivot = indexOfMedianOfThree(i, j, m);
+
+            while (i <= j) {
+                while (arr[i] < pivot) i++;
+
+                while (arr[j] > pivot) j--;
+
+                if (i < j) {
+                    exchange(i, j);
+                    i++;
+                    j--;
+                } else if (i == j) {
+                    i++;
+                    j--;
+                }
+            }
+
+            if (low < j) {
+                quicksort(low, j);
+            }
+            if (i < high) {
+                quicksort(i, high);
+            }
+        }
+    }
+
+    private static void quicksort6(int low, int high){
+        if (!isSorted(low, high)){
+
+            int i = low, j = high;
+
+            int pivot = indexOfMedianOfNine(low, high);
+
+            while (i <= j) {
+                while (arr[i] < pivot) i++;
+
+                while (arr[j] > pivot) j--;
+
+                if (i < j) {
+                    exchange(i, j);
+                    i++;
+                    j--;
+                } else if (i == j) {
+                    i++;
+                    j--;
+                }
+            }
+
+            if (low < j) {
+                quicksort(low, j);
+            }
+            if (i < high) {
+                quicksort(i, high);
+            }
+        }
+    }
+
+    private static int indexOfMedianOfThree(int x, int y, int z){
+        return arr[x] > arr[y] && arr[x] > arr[z] ? (arr[y] > arr[z] ? y : z) : (arr[x] < arr[y] && arr[x] < arr[z] ? (arr[y] < arr[z] ? y : z) : x);
+    }
+
+    private static int indexOfMedianOfNine(int x, int y){
+        // x  z/9  2z/9  3z/9  4z/9  5z/9  6z/9  7z/9  8z/9  z
+
+        int med1 = indexOfMedianOfThree(x, (2*y)/9, y/3);
+        int med2 = indexOfMedianOfThree((4*y)/9, (5*y)/9, (2*y)/3);
+        int med3 = indexOfMedianOfThree((7*y)/9, (8*y)/9, y);
+
+        return indexOfMedianOfThree(med1, med2, med3);
+    }
+
 }
