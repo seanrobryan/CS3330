@@ -284,8 +284,24 @@ public class sorting {
         for(int i=0; i<size; i++) arrCopy[i] = size-i;
         demo1("reversely sorted"); */
 
-        //task1();
-        //task2();
+        try {
+            System.out.println("Which task would you like to select? ");
+            int task = Integer.parseInt(read.readLine());
+
+            switch(task){
+                case 1:
+                    task1();
+                    break;
+                case 2:
+                    task2();
+                    break;
+                case 3:
+                    task3();
+                    break;
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /*
@@ -425,8 +441,6 @@ public class sorting {
 
     private static void quicksort3(int low, int high){
 
-        if (!isSorted(low, high)){
-
             int i = low, j = high;
 
             int pivot = arr[(high + low) / 2];
@@ -446,18 +460,18 @@ public class sorting {
                 }
             }
 
+        if (!isSorted(low, high)){
             if (low < j) {
-                quicksort(low, j);
+                quicksort3(low, j);
             }
             if (i < high) {
-                quicksort(i, high);
+                quicksort3(i, high);
             }
         }
     }
 
     private static void quicksort4(int low, int high) {
 
-        if (!isSorted(low, high)) {
             int i = low, j = high;
 
             int pivot = arr[(high + low) / 2];
@@ -477,17 +491,18 @@ public class sorting {
                 }
             }
 
+        if (!isSorted(low, high)) {
             if (low < j)
                 if (j - low < 1000) {
                     insertSort(low, j);
                 } else {
-                    quicksort2(low, j);
+                    quicksort4(low, j);
                 }
             if (i < high)
                 if (high - i < 1000) {
                     insertSort(i, high);
                 } else {
-                    quicksort2(i, high);
+                    quicksort4(i, high);
                 }
         }
     }
@@ -639,10 +654,10 @@ public class sorting {
             runningTimes[3] += finish - start;
         }
 
-        System.out.println("Total running time for quicksort on an unsorted array is: " + runningTimes[0] + " ms");
-        System.out.println("Total running time for quicksort2 on an unsorted array is: " + runningTimes[1] + " ms");
-        System.out.println("Total running time for quicksort3 on an unsorted array is: " + runningTimes[2] + " ms");
-        System.out.println("Total running time for quicksort4 on an unsorted array is: " + runningTimes[3] + " ms");
+        System.out.println("Total running time for quicksort on a reversely sorted array is: " + runningTimes[0] + " ms");
+        System.out.println("Total running time for quicksort2 on a reversely sorted array is: " + runningTimes[1] + " ms");
+        System.out.println("Total running time for quicksort3 on a reversely unsorted array is: " + runningTimes[2] + " ms");
+        System.out.println("Total running time for quicksort4 on a reversely unsorted array is: " + runningTimes[3] + " ms");
     }
 
     /*
@@ -658,7 +673,7 @@ public class sorting {
 
             int i = low, j = high, m = (i + j) / 2;
 
-            int pivot = indexOfMedianOfThree(i, j, m);
+            int pivot = arr[indexOfMedianOfThree(low, high, m)];
 
             while (i <= j) {
                 while (arr[i] < pivot) i++;
@@ -689,7 +704,7 @@ public class sorting {
 
             int i = low, j = high;
 
-            int pivot = indexOfMedianOfNine(low, high);
+            int pivot = arr[indexOfMedianOfNine(low, high)];
 
             while (i <= j) {
                 while (arr[i] < pivot) i++;
@@ -729,4 +744,169 @@ public class sorting {
         return indexOfMedianOfThree(med1, med2, med3);
     }
 
+    private static void task3(){
+        randomGenerator = new Random();
+
+        size = 1000000;
+
+        // create array
+        arr = new int[size];
+        arrCopy = new int[size];
+        mergeArr = new int[size];
+
+        long [] runningTimes = new long[5];
+        for(int i = 0; i < 5; i++) runningTimes[i] = 0;
+        long start, finish;
+
+        for(int i = 0; i < 10; i++){
+            // fill array
+            random = size*10;
+            for(int j=0; j<size; j++) {
+                arr[j] = arrCopy[j] = randomGenerator.nextInt(random);
+            }
+
+            // Test regular heapsort
+            start = System.currentTimeMillis();
+            heapsort();
+            finish = System.currentTimeMillis();
+            runningTimes[0] += finish - start;
+
+            // Test quicksort
+            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            start = System.currentTimeMillis();
+            quicksort(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[1] += finish - start;
+
+            // Test quicksort3
+            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            start = System.currentTimeMillis();
+            quicksort3(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[2] += finish - start;
+
+            // Test quicksort5
+            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            start = System.currentTimeMillis();
+            quicksort5(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[3] += finish - start;
+
+            // Test quicksort6
+            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            start = System.currentTimeMillis();
+            quicksort6(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[4] += finish - start;
+        }
+
+        System.out.println("Total running time for heapsort is: " + runningTimes[0] + " ms");
+        System.out.println("Total running time for quicksort is: " + runningTimes[1] + " ms");
+        System.out.println("Total running time for quicksort3 is: " + runningTimes[2] + " ms");
+        System.out.println("Total running time for quicksort5 is: " + runningTimes[3] + " ms");
+        System.out.println("Total running time for quicksort6 is: " + runningTimes[4] + " ms");
+
+
+        for(int i = 0; i < 4; i++) runningTimes[i] = 0;
+
+        for(int i = 0; i < 10; i++){
+            // fill array
+            for(int j=size-1; j >= 0; j--) {
+                arr[j] = arrCopy[j] = j;
+            }
+
+            // Test regular heapsort
+            start = System.currentTimeMillis();
+            heapsort();
+            finish = System.currentTimeMillis();
+            runningTimes[0] += finish - start;
+
+            // Test quicksort
+            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            start = System.currentTimeMillis();
+            quicksort(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[1] += finish - start;
+
+            // Test quicksort3
+            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            start = System.currentTimeMillis();
+            quicksort3(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[2] += finish - start;
+            printArray("quick sort 3");
+
+            // Test quicksort5
+            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            start = System.currentTimeMillis();
+            quicksort5(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[3] += finish - start;
+
+            // Test quicksort6
+            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            start = System.currentTimeMillis();
+            quicksort6(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[4] += finish - start;
+        }
+
+        System.out.println("Total running time for heapsort on a reversely sorted array is: " + runningTimes[0] + " ms");
+        System.out.println("Total running time for quicksort on a reversely sorted array is: " + runningTimes[1] + " ms");
+        System.out.println("Total running time for quicksort3 on a reversely sorted array is: " + runningTimes[2] + " ms");
+        System.out.println("Total running time for quicksort5 on a reversely sorted array is: " + runningTimes[3] + " ms");
+        System.out.println("Total running time for quicksort6 on a reversely sorted array is: " + runningTimes[4] + " ms");
+
+        for(int i = 0; i < 4; i++) runningTimes[i] = 0;
+
+        for(int i = 0; i < 10; i++){
+            // fill array
+            for(int j = 0; j < size/2; j++){
+              arr[j] = (size/2) - j + 1;
+            }
+            for(int j = size - 1; j >= 0; j--){
+                arr[j] = j - (size/2) + 1;
+            }
+
+            // Test regular heapsort
+            start = System.currentTimeMillis();
+            heapsort();
+            finish = System.currentTimeMillis();
+            runningTimes[0] += finish - start;
+
+            // Test quicksort
+            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            start = System.currentTimeMillis();
+            quicksort(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[1] += finish - start;
+
+            // Test quicksort3
+            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            start = System.currentTimeMillis();
+            quicksort3(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[2] += finish - start;
+
+            // Test quicksort5
+            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            start = System.currentTimeMillis();
+            quicksort5(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[3] += finish - start;
+
+            // Test quicksort6
+            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            start = System.currentTimeMillis();
+            quicksort6(0, size - 1);
+            finish = System.currentTimeMillis();
+            runningTimes[4] += finish - start;
+        }
+
+        System.out.println("Total running time for heapsort on an organ shaped array is: " + runningTimes[0] + " ms");
+        System.out.println("Total running time for quicksort on a an organ shaped array is: " + runningTimes[1] + " ms");
+        System.out.println("Total running time for quicksort3 on an organ shaped array is: " + runningTimes[2] + " ms");
+        System.out.println("Total running time for quicksort5 on an organ shaped array is: " + runningTimes[3] + " ms");
+        System.out.println("Total running time for quicksort6 on an organ shaped array is: " + runningTimes[4] + " ms");
+    }
 }
