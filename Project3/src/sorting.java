@@ -298,6 +298,9 @@ public class sorting {
                 case 3:
                     task3();
                     break;
+                case 4:
+                    task4();
+                    break;
             }
         } catch (Exception e){
             e.printStackTrace();
@@ -758,7 +761,7 @@ public class sorting {
         for(int i = 0; i < 5; i++) runningTimes[i] = 0;
         long start, finish;
 
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 100; i++){
             // fill array
             random = size*10;
             for(int j=0; j<size; j++) {
@@ -772,28 +775,28 @@ public class sorting {
             runningTimes[0] += finish - start;
 
             // Test quicksort
-            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            restoreArray();
             start = System.currentTimeMillis();
             quicksort(0, size - 1);
             finish = System.currentTimeMillis();
             runningTimes[1] += finish - start;
 
             // Test quicksort3
-            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            restoreArray();
             start = System.currentTimeMillis();
             quicksort3(0, size - 1);
             finish = System.currentTimeMillis();
             runningTimes[2] += finish - start;
 
             // Test quicksort5
-            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            restoreArray();
             start = System.currentTimeMillis();
             quicksort5(0, size - 1);
             finish = System.currentTimeMillis();
             runningTimes[3] += finish - start;
 
             // Test quicksort6
-            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            restoreArray();
             start = System.currentTimeMillis();
             quicksort6(0, size - 1);
             finish = System.currentTimeMillis();
@@ -807,7 +810,7 @@ public class sorting {
         System.out.println("Total running time for quicksort6 is: " + runningTimes[4] + " ms");
 
 
-        for(int i = 0; i < 4; i++) runningTimes[i] = 0;
+        for(int i = 0; i < 5; i++) runningTimes[i] = 0;
 
         for(int i = 0; i < 10; i++){
             // fill array
@@ -822,29 +825,28 @@ public class sorting {
             runningTimes[0] += finish - start;
 
             // Test quicksort
-            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            restoreArray();
             start = System.currentTimeMillis();
             quicksort(0, size - 1);
             finish = System.currentTimeMillis();
             runningTimes[1] += finish - start;
 
             // Test quicksort3
-            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            restoreArray();
             start = System.currentTimeMillis();
             quicksort3(0, size - 1);
             finish = System.currentTimeMillis();
             runningTimes[2] += finish - start;
-            printArray("quick sort 3");
 
             // Test quicksort5
-            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            restoreArray();
             start = System.currentTimeMillis();
             quicksort5(0, size - 1);
             finish = System.currentTimeMillis();
             runningTimes[3] += finish - start;
 
             // Test quicksort6
-            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            restoreArray();
             start = System.currentTimeMillis();
             quicksort6(0, size - 1);
             finish = System.currentTimeMillis();
@@ -857,7 +859,7 @@ public class sorting {
         System.out.println("Total running time for quicksort5 on a reversely sorted array is: " + runningTimes[3] + " ms");
         System.out.println("Total running time for quicksort6 on a reversely sorted array is: " + runningTimes[4] + " ms");
 
-        for(int i = 0; i < 4; i++) runningTimes[i] = 0;
+        for(int i = 0; i < 5; i++) runningTimes[i] = 0;
 
         for(int i = 0; i < 10; i++){
             // fill array
@@ -875,28 +877,28 @@ public class sorting {
             runningTimes[0] += finish - start;
 
             // Test quicksort
-            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            restoreArray();
             start = System.currentTimeMillis();
             quicksort(0, size - 1);
             finish = System.currentTimeMillis();
             runningTimes[1] += finish - start;
 
             // Test quicksort3
-            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            restoreArray();
             start = System.currentTimeMillis();
             quicksort3(0, size - 1);
             finish = System.currentTimeMillis();
             runningTimes[2] += finish - start;
 
             // Test quicksort5
-            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            restoreArray();
             start = System.currentTimeMillis();
             quicksort5(0, size - 1);
             finish = System.currentTimeMillis();
             runningTimes[3] += finish - start;
 
             // Test quicksort6
-            for (int j=0; j<size; j++) arr[j] = arrCopy[j];
+            restoreArray();
             start = System.currentTimeMillis();
             quicksort6(0, size - 1);
             finish = System.currentTimeMillis();
@@ -908,5 +910,157 @@ public class sorting {
         System.out.println("Total running time for quicksort3 on an organ shaped array is: " + runningTimes[2] + " ms");
         System.out.println("Total running time for quicksort5 on an organ shaped array is: " + runningTimes[3] + " ms");
         System.out.println("Total running time for quicksort6 on an organ shaped array is: " + runningTimes[4] + " ms");
+    }
+
+    /*
+
+        Start of Task 4
+        quicksort5 performed about as well as the other fast quicksort algorithm, quicksort6, on random arrays but
+        performed much better on arrays with a large degree of order at the beginning so this version will be used
+        in this task.
+
+    */
+
+
+    private static void makeKDistanceArr(int k){
+        random = size*10;
+        for(int j=0; j<size; j++) {
+            arr[j] = randomGenerator.nextInt(random);
+        }
+        quicksort5(0, size - 1);
+
+        for (int i = 0; i < size - k; i+=k) {
+            for (int j = (k - 1) / 2; j > 0; j--){
+                exchange(randomGenerator.nextInt(k) + i, randomGenerator.nextInt(k) + i);
+            }
+        }
+
+        for(int j = 0; j < size; j++) arrCopy[j] = arr[j];
+
+    }
+
+    private static void makeKExchangeArr(int k){
+        random = size*10;
+        for(int j=0; j<size; j++) {
+            arr[j] = randomGenerator.nextInt(random);
+        }
+        quicksort5(0, size - 1);
+
+        while (k > 0){
+            exchange(randomGenerator.nextInt(size), randomGenerator.nextInt(size));
+           k--;
+        }
+
+        for(int i = 0; i < size; i++) arrCopy[i] = arr[i];
+    }
+
+    private static void task4(){
+
+        size = 5000000;
+        long [] runningTimes = {0, 0, 0, 0, 0};
+        long start, finish;
+        arr = new int[size];
+        arrCopy = new int[size];
+        mergeArr = new int[size];
+
+        int [] ks = {10, 20, 40, 80, 160, 320};
+
+        for (int i = 0; i < 6; i++){
+            for (int j = 0; j < 100; j++){
+                makeKDistanceArr(ks[i]);
+
+                // Test quicksort5
+                start = System.currentTimeMillis();
+                quicksort5(0, size - 1);
+                finish = System.currentTimeMillis();
+                runningTimes[0] += finish - start;
+
+                // Test heapsort
+                restoreArray();
+                start = System.currentTimeMillis();
+                heapsort();
+                finish = System.currentTimeMillis();
+                runningTimes[1] += finish - start;
+
+                // Test mergesort
+                restoreArray();
+                start = System.currentTimeMillis();
+                mergesort(0, size - 1);
+                finish = System.currentTimeMillis();
+                runningTimes[2] += finish - start;
+
+                // Test natural mergesort
+                restoreArray();
+                start = System.currentTimeMillis();
+                naturalMergesort();
+                finish = System.currentTimeMillis();
+                runningTimes[3] += finish - start;
+
+                // Test insertion sort
+                restoreArray();
+                start = System.currentTimeMillis();
+                insertionSort();
+                finish = System.currentTimeMillis();
+                runningTimes[4] += finish - start;
+            }
+
+            System.out.println("Total running time for quicksort5 on a k-distance array where k is " + ks[i] + ": " + runningTimes[0] + " ms");
+            System.out.println("Total running time for heapsort on a k-distance array where k is " + ks[i] + ": " + runningTimes[1] + " ms");
+            System.out.println("Total running time for mergesort on a k-distance array where k is " + ks[i] + ": " + runningTimes[2] + " ms");
+            System.out.println("Total running time for natural mergesort on a k-distance array where k is " + ks[i] + ": " + runningTimes[3] + " ms");
+            System.out.println("Total running time for insertion sort on a k-distance array where k is " + ks[i] + ": " + runningTimes[4] + " ms");
+
+        }
+
+        for (int i = 0; i < 6; i++){
+            ks[i] = 100 * (int) Math.pow(2, i);
+
+            for (int j = 0; j < 100; j++){
+                makeKExchangeArr(ks[i]);
+
+                // Test quicksort5
+                start = System.currentTimeMillis();
+                quicksort5(0, size - 1);
+                finish = System.currentTimeMillis();
+                runningTimes[0] += finish - start;
+
+                // Test heapsort
+                restoreArray();
+                start = System.currentTimeMillis();
+                heapsort();
+                finish = System.currentTimeMillis();
+                runningTimes[1] += finish - start;
+
+                // Test mergesort
+                restoreArray();
+                start = System.currentTimeMillis();
+                mergesort(0, size - 1);
+                finish = System.currentTimeMillis();
+                runningTimes[2] += finish - start;
+
+                // Test natural mergesort
+                restoreArray();
+                start = System.currentTimeMillis();
+                naturalMergesort();
+                finish = System.currentTimeMillis();
+                runningTimes[3] += finish - start;
+
+                // Test insertion sort
+                restoreArray();
+                start = System.currentTimeMillis();
+                insertionSort();
+                finish = System.currentTimeMillis();
+                runningTimes[4] += finish - start;
+            }
+            System.out.println("Total running time for quicksort5 on a k-exchange array where k is " + ks[i] + ": " + runningTimes[0] + " ms");
+            System.out.println("Total running time for heapsort on a k-exchange array where k is " + ks[i] + ": " + runningTimes[1] + " ms");
+            System.out.println("Total running time for mergesort on a k-exchange array where k is " + ks[i] + ": " + runningTimes[2] + " ms");
+            System.out.println("Total running time for natural mergesort on a k-exchange array where k is " + ks[i] + ": " + runningTimes[3] + " ms");
+            System.out.println("Total running time for insertion sort on a k-exchange array where k is " + ks[i] + ": " + runningTimes[4] + " ms");
+        }
+    }
+
+    private static void restoreArray(){
+        for (int i=0; i<size; i++) arr[i] = arrCopy[i];
     }
 }
