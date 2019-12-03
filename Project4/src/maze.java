@@ -12,12 +12,15 @@ public class maze {
 
     public static class Point {  // a Point is a position in the maze
 
-        public int x, y;
+        public int x, y, setSize;
+        public Point parent;
 
         // Constructor
         public Point(int x, int y) {
             this.x = x;
             this.y = y;
+            setSize = 1;
+            this.parent = this;
         }
 
         public void copy(Point p) {
@@ -70,6 +73,20 @@ public class maze {
         System.out.print("    -");
         for (int j = 0; j < Size; ++j) System.out.print("----");
         System.out.println();
+    }
+
+    private static void union(Point p1, Point p2){
+        Point parent1 = p1.parent;
+        Point parent2 = p2.parent;
+
+        if (parent1.setSize > parent2.setSize){
+            parent2.parent = parent1;
+            parent1.setSize += parent2.setSize;
+        }
+        else if (parent1.setSize < parent2.setSize){
+            parent1.parent = parent2;
+            parent2.setSize += parent1.setSize;
+        }
     }
 
     public static void main(String[] args) {
