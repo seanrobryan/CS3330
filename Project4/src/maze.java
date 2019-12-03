@@ -89,6 +89,13 @@ public class maze {
         }
     }
 
+    public static Point find(Point p){
+        if(p.parent != p){
+            p.parent = find(p.parent);
+        }
+        return p.parent;
+    }
+
     public static void main(String[] args) {
 
         // Read in the Size of a maze
