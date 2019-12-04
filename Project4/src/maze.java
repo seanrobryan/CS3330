@@ -58,20 +58,44 @@ public class maze {
         System.out.println("\nInitial Configuration:");
 
         for (int i = 0; i < Size; ++i) {
+            //Tick in line with the 't' of start
             System.out.print("    -");
-            for (int j = 0; j < Size; ++j) System.out.print("----");
+
+            for (int j = 0; j < Size; ++j){
+                if (graph[i * Size + j][down].deleted){
+                    System.out.print("    ");
+                }
+                else {
+                    System.out.print("----");
+                }
+            }
             System.out.println();
-            if (i == 0) System.out.print("Start");
-            else System.out.print("    |");
+
+            if (i == 0){
+                System.out.print("Start");
+            }
+            else {
+                System.out.print("    |");
+            }
             for (int j = 0; j < Size; ++j) {
-                if (i == Size-1 && j == Size-1)
+                if (i == Size-1 && j == Size-1) {
                     System.out.print("    End");
-                else System.out.print("   |");
+                }
+                else {
+                    if (graph[i * Size + j][right].deleted){
+                        System.out.print("    ");
+                    }
+                    else {
+                        System.out.print("   |");
+                    }
+                }
             }
             System.out.println();
         }
         System.out.print("    -");
-        for (int j = 0; j < Size; ++j) System.out.print("----");
+        for (int j = 0; j < Size; ++j){
+            System.out.print("----");
+        }
         System.out.println();
     }
 
@@ -96,18 +120,76 @@ public class maze {
         return p.parent;
     }
 
+    public static void generateMaze(){
+        int remainingEdges = Size * Size;
+
+        while(remainingEdges > 1){
+            int direction = randomGenerator.nextInt(4);
+            int col = randomGenerator.nextInt(Size);
+            int row = randomGenerator.nextInt(Size);
+            int from = col * Size + row;
+
+            int nextCol, nextRow, reverseDirection;
+
+            if (direction == right){
+                nextCol = col;
+                nextRow = row + 1;
+                reverseDirection = left;
+            }
+            else if (direction == down){
+                nextCol = col + 1;
+                nextRow = row;
+                reverseDirection = up;
+            }
+            else if (direction == left){
+                nextCol = col;
+                nextRow = row - 1;
+                reverseDirection = right;
+            }
+            else{
+                nextCol = col - 1;
+                nextRow = row;
+                reverseDirection = down;
+            }
+
+            int to = nextCol * Size + nextRow;
+
+            if (!graph[from][direction].used && !graph[from][direction].deleted &&
+                    !graph[to][reverseDirection].used && !graph[to][reverseDirection].deleted){
+
+                Point p1 = board[col][row];
+                Point p2 = board[nextCol][nextRow];
+
+                if(p1.parent != p2.parent){
+                    union(p1, p2);
+                    graph[from][direction].deleted = true;
+                    graph[to][reverseDirection].deleted = true;
+                    remainingEdges--;
+                }
+                else{
+                    graph[from][direction].used = true;
+                    graph[to][reverseDirection].used = true;
+                }
+            }
+        }
+    }
+
+    /*
+        TODO: Uncomment this
+     */
     public static void main(String[] args) {
 
         // Read in the Size of a maze
         Scanner scan = new Scanner(System.in);
-        try {
+        /*try {
             System.out.println("What's the size of your maze? ");
             Size = scan.nextInt();
         }
         catch(Exception ex){
             ex.printStackTrace();
         }
-        scan.close();
+        scan.close();*/
+        Size = 7;
 
 
         // Create one dummy edge for all boundary edges.
@@ -141,6 +223,9 @@ public class maze {
         randomGenerator = new Random();
         int i = randomGenerator.nextInt(N);
         System.out.println("\nA random number between 0 and " + (N-1) + ": " + i);
+
+        generateMaze();
+        displayInitBoard();
 
     }
 }
