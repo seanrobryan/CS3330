@@ -100,16 +100,15 @@ public class maze {
     }
 
     private static void union(Point p1, Point p2){
-        Point parent1 = find(p1);
-        Point parent2 = find(p2);
-
-        if (parent1.setSize > parent2.setSize){
-            parent2.parent = parent1;
-            parent1.setSize += parent2.setSize;
-        }
-        else if (parent1.setSize < parent2.setSize){
-            parent1.parent = parent2;
-            parent2.setSize += parent1.setSize;
+        if (find(p1) != find(p2)){
+            if (p1.parent.setSize > p2.parent.setSize){
+                p2.parent.parent = p1.parent;
+                p1.parent.setSize += p2.parent.setSize;
+            }
+            else {
+                p1.parent.parent = p2.parent;
+                p2.parent.setSize += p1.parent.setSize;
+            }
         }
     }
 
@@ -160,7 +159,7 @@ public class maze {
                 Point p1 = board[col][row];
                 Point p2 = board[nextCol][nextRow];
 
-                if(p1.parent != p2.parent){
+                if(find(p1) != find(p2)){
                     union(p1, p2);
                     graph[from][direction].deleted = true;
                     graph[to][reverseDirection].deleted = true;
@@ -226,6 +225,5 @@ public class maze {
 
         generateMaze();
         displayInitBoard();
-
     }
 }
