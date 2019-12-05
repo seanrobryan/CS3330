@@ -62,8 +62,8 @@ public class maze {
             System.out.print("    -");
 
             for (int j = 0; j < Size; ++j){
-                if (graph[i * Size + j][down].deleted){
-                    System.out.print("    ");
+                if (graph[i * Size + j][up].deleted){
+                    System.out.print("   -");
                 }
                 else {
                     System.out.print("----");
@@ -100,8 +100,8 @@ public class maze {
     }
 
     private static void union(Point p1, Point p2){
-        Point parent1 = p1.parent;
-        Point parent2 = p2.parent;
+        Point parent1 = find(p1);
+        Point parent2 = find(p2);
 
         if (parent1.setSize > parent2.setSize){
             parent2.parent = parent1;
