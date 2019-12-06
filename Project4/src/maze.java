@@ -189,9 +189,21 @@ public class maze {
         // When it finds a direction that is deleted, call DFS on that path
         // Lay down some sort of marker for paths explored and true path
         // When it hits the bottom right, exit and the filled in path will be printed with another boarding printing function
-        board[col][row].status = exploring;
+        Point curPoint = board[col][row];
+        curPoint.status = exploring;
         int from = col * Size + row;
         int nextCol, nextRow;
+
+        if(curPoint.x == Size - 1 && curPoint.y == Size - 1){
+            for (int x = 0; x < Size; x++){
+                for (int y = 0; y < Size; y++){
+                    if(board[x][y].status == exploring){
+                        board[x][y].path = true;
+                    }
+                }
+            }
+            return;
+        }
 
         for (int direction = 0; direction < 4; direction++){
             if (graph[from][direction].deleted){
@@ -212,8 +224,11 @@ public class maze {
                     nextRow = row;
                 }
                 Point nextPoint = board[nextCol][nextRow];
-
+                if (nextPoint.status == unvisited){
+                    depthFirstSearch(nextPoint.x, nextPoint.y);
+                }
             }
+            board[col][row].status = explored;
         }
     }
 
