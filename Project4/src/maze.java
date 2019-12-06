@@ -10,7 +10,6 @@ public class maze {
     private static final int unvisited = 0;
     private static final int exploring = 1;
     private static final int explored = 2;
-    private static final int path = 3;
 
     public static int Size;
 
@@ -19,6 +18,7 @@ public class maze {
         public int x, y, setSize;
         public Point parent;
         public int status;
+        public boolean path;
 
         // Constructor
         public Point(int x, int y) {
@@ -27,7 +27,7 @@ public class maze {
             this.setSize = 1;
             this.parent = this;
             this.status = unvisited;
-
+            this.path = false;
         }
 
         public void copy(Point p) {
@@ -189,7 +189,32 @@ public class maze {
         // When it finds a direction that is deleted, call DFS on that path
         // Lay down some sort of marker for paths explored and true path
         // When it hits the bottom right, exit and the filled in path will be printed with another boarding printing function
+        board[col][row].status = exploring;
+        int from = col * Size + row;
+        int nextCol, nextRow;
 
+        for (int direction = 0; direction < 4; direction++){
+            if (graph[from][direction].deleted){
+                if (direction == right){
+                    nextCol = col;
+                    nextRow = row + 1;
+                }
+                else if (direction == down){
+                    nextCol = col + 1;
+                    nextRow = row;
+                }
+                else if (direction == left){
+                    nextCol = col;
+                    nextRow = row - 1;
+                }
+                else{
+                    nextCol = col - 1;
+                    nextRow = row;
+                }
+                Point nextPoint = board[nextCol][nextRow];
+
+            }
+        }
     }
 
     /*
