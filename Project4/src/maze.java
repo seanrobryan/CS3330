@@ -7,6 +7,10 @@ public class maze {
     private static final int left = 2;
     private static final int up = 3;
     private static Random randomGenerator;  // for random numbers
+    private static final int unvisited = 0;
+    private static final int exploring = 1;
+    private static final int explored = 2;
+    private static final int path = 3;
 
     public static int Size;
 
@@ -14,13 +18,16 @@ public class maze {
 
         public int x, y, setSize;
         public Point parent;
+        public int status;
 
         // Constructor
         public Point(int x, int y) {
             this.x = x;
             this.y = y;
-            setSize = 1;
+            this.setSize = 1;
             this.parent = this;
+            this.status = unvisited;
+
         }
 
         public void copy(Point p) {
@@ -171,6 +178,18 @@ public class maze {
                 }
             }
         }
+    }
+
+    private static void depthFirstSearch(int col, int row){
+        // Start from the top left
+        // End at the bottom right
+        // Will need params to represent which point it is at
+        // Check all for directions for a deleted edge (cannot be the one it came from)
+            // Not sure how to specify that yet
+        // When it finds a direction that is deleted, call DFS on that path
+        // Lay down some sort of marker for paths explored and true path
+        // When it hits the bottom right, exit and the filled in path will be printed with another boarding printing function
+
     }
 
     /*
