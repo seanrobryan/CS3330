@@ -204,7 +204,6 @@ public class maze {
             }
             return;
         }
-
         for (int direction = 0; direction < 4; direction++){
             if (graph[from][direction].deleted){
                 if (direction == right){
@@ -232,22 +231,80 @@ public class maze {
         }
     }
 
-    /*
-        TODO: Uncomment this
-     */
+    public static void displaySolvedBoard(){
+        System.out.print("\nSolution:\n    -");
+        for (int p = 0; p < Size; ++p) {
+            System.out.print("----");
+        }
+        System.out.println();
+
+        for (int i = 0; i < Size; ++i) {
+            if (i == 0){
+                System.out.print("Start");
+            }
+            else{
+                System.out.print("    |");
+            }
+
+            for (int j = 0; j < Size - 1; ++j) {
+                int graphIndex = i * Size + j;
+
+                if (board[i][j].path) {
+                    System.out.print(" * ");
+                    if (graph[graphIndex][right].deleted) {
+                        System.out.print(" ");
+                    }
+                    else {
+                        System.out.print("|");
+                    }
+                }
+                else {
+                    if (graph[graphIndex][right].deleted) {
+                        System.out.print("    ");
+                    }
+                    else {
+                        System.out.print("   |");
+                    }
+                }
+            }
+
+            if (i == Size - 1) {
+                System.out.println(" *  End");
+            }
+            else {
+                if (board[i][Size - 1].path) {
+                    System.out.println(" * |");
+                } else {
+                    System.out.println("   |");
+                }
+            }
+
+            System.out.print("    -");
+            for (int j = 0; j < Size; ++j) {
+                int graphIndex = i * Size + j;
+                if (graph[graphIndex][down].deleted) {
+                    System.out.print("   -");
+                }
+                else {
+                    System.out.print("----");
+                }
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
 
         // Read in the Size of a maze
         Scanner scan = new Scanner(System.in);
-        /*try {
+        try {
             System.out.println("What's the size of your maze? ");
             Size = scan.nextInt();
         }
         catch(Exception ex){
             ex.printStackTrace();
         }
-        scan.close();*/
-        Size = 7;
+        scan.close();
 
 
         // Create one dummy edge for all boundary edges.
@@ -273,8 +330,6 @@ public class maze {
 
             }
 
-        displayInitBoard();
-
         // Hint: To randomly pick an edge in the maze, you may
         // randomly pick a point first, then randomly pick
         // a direction to get the edge associated with the point.
@@ -284,5 +339,7 @@ public class maze {
 
         generateMaze();
         displayInitBoard();
+        depthFirstSearch(0,0);
+        displaySolvedBoard();
     }
 }
