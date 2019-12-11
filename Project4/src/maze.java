@@ -227,8 +227,8 @@ public class maze {
                     depthFirstSearch(nextPoint.x, nextPoint.y);
                 }
             }
-            board[col][row].status = explored;
         }
+        board[col][row].status = explored;
     }
 
     public static void displaySolvedBoard(){
